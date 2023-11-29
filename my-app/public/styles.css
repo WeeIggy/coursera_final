@@ -1,0 +1,124 @@
+
+body {
+    background-color: lightyellow;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+header img{
+    width: 30%;
+    padding: 20px;
+    display: block;
+    margin:auto;
+}
+
+main{
+    margin:auto;
+    text-align: center;
+    width:70%;
+}
+
+nav{
+    display: box;
+    background-color:olive;
+    width: calc(70% - 20px);
+    margin:auto;
+    border-radius: 15px;
+}
+
+nav ul{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+nav ul li a{
+    text-decoration:none;
+    color:black;
+    display: block;
+}
+#openingHours{
+    list-style-type: none;
+    font-size: 1.5rem;
+    margin-left: -40px;
+}
+nav ul li{
+    list-style-type: none;
+   font-size: 1.5rem;
+   padding: 1rem;
+   text-transform: uppercase;
+
+}
+nav ul li:hover, nav ul li:hover a{
+    color :white;
+    background-color: khaki;
+ 
+}
+footer{
+    width: calc(70% - 50px);
+    margin:auto;
+    background-color: olive;
+    display:flex;
+    border-radius: 15px;
+    align-items: center;
+    padding:15px;
+    justify-content: space-between;
+}
+ 
+footer div img{
+    width: 10%;
+}
+
+.copyright{
+    font-size:1.1rem;
+    white-space: nowrap;
+}
+section{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap
+}
+
+article{
+    margin:10px;
+    margin-bottom:20px;
+    min-height:200px;
+    flex:1; 
+    background-color: wheat;
+    border-radius: 15px;
+    min-height:400px;
+    color:black;
+} 
+.mainArticle{
+    color:white;
+    background-image:url("icons_assets/banner_chicken.png");
+    border-radius: 15px;
+}
+h1{
+    font-size: 1.8rem;
+}
+p{
+    font-size: 1.2rem;
+    line-height: 2rem;
+    padding:15px;
+}
+.miniPic{
+    width:80%;
+    height: 390px;;
+}
+.miniPic:hover,.button:hover {
+    filter:brightness(50%);
+    transition: 700ms;
+}
+.button{
+    display: inline-block;
+    background-color: rgb(54, 54, 54);
+    padding:1.5rem;
+    border-radius: 15px;
+    width: 50%;
+    letter-spacing: 0.3rem;
+    font-weight:200;
+    color:white;
+    margin-bottom:20px;
+    margin-top:50px;
+    text-transform: uppercase;
+
+}
