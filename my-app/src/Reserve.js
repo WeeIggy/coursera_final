@@ -1,40 +1,65 @@
-import Header from './Header.js';
-import Nav from './Nav.js';
-import Footer from './Footer.js';
-function Reserve(props){
-    return (
-        <div>
-              <main><article>
-                <h1 style = {{padding: '20px'}}>Reserve a table</h1>
-                <form style={{display: 'grid', maxWidth: '200px', gap: '20px', margin: 'auto', paddingBottom: '4rem'}}>
-                <label for="res-date">Choose date</label>
-                <input type="date" id="res-date"/>
-                <label for="res-time">Choose time</label>
-                <select id="res-time ">
-                <option>17:00</option>
-                <option>18:00</option>
-                <option>19:00</option>
-                <option>20:00</option>
-                <option>21:00</option>
-                <option>22:00</option>
-                </select>
-                <label for="guests">Number of guests</label>
-                <input type="number" placeholder="1" min="1" max="10" id="guests"/>
-                <label for="occasion">Occasion</label>
-                <select id="occasion">
-                <option>Birthday</option>
-                <option>Anniversary</option>
-                </select>
-                <input type="submit" value="Make Your reservation"/>
-                </form>
-                
-            </article></main>
 
-        </div>
-
-    );
+import React, { useReducer } from 'react';
+import BookingForm from './BookingForm';
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import BookingSuccess from './BookingSuccess';
+function Reserve() {
 
 
+    const fetchAPI = function(date) {
+        let result = [];
+
+        for(let i = 17; i < 23; i++) {
+            if(Math.random() < 0.5) {
+                result.push(i + ':00');
+            }
+            if(Math.random() < 0.5) {
+                result.push(i + ':30');
+            }
+        }
+        return result;
+    };
+
+
+    //----------------------------
+function submitAPI  () { return true};
+
+
+const navigate = useNavigate();
+
+function submitForm (formData) {
+    if (submitAPI(formData)) {
+     navigate("/confirmed")
+}
+}
+  function initializeTimes() {
+    return fetchAPI(new Date);
+  }
+  
+  function updateTimes(state, action) {
+    return fetchAPI(state);
+  }
+
+  const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+  const showBookingForm = true; // Set to true to display the BookingForm component
+
+  const handleDateChange = (selectedDate) => {
+    dispatch({ type: 'update_times', availableTimes: initializeTimes() });
+  };
+
+  return (
+    <div>
+      
+      {showBookingForm && (
+        <BookingForm
+          availableTimes={availableTimes}
+          handleDateChange={handleDateChange}
+          submitForm={submitForm}
+        />
+      )}
+      {/* Rest of your Main component code */}
+    </div>
+  );
 }
 
 export default Reserve;

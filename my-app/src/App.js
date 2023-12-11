@@ -7,6 +7,7 @@ import Home from './Home.js';
 import Menu from './Menu.js';
 import Reserve from './Reserve.js';
 import Contact from './Contact.js';
+import BookingSuccess  from './BookingSuccess.js';
 import About from './About.js';
 import { Route, Routes } from 'react-router-dom';
 
@@ -16,6 +17,8 @@ function App() {
     <Header />
     <Nav></Nav> 
     <Routes>
+ 
+      <Route path ='/confirmed' element ={<BookingSuccess/>}/>
       <Route path="/" element = {<Home/>}/>
       <Route path="/menu" element = {<Menu />}/>
       <Route path="/about" element = {<About />}/>
